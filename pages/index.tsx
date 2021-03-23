@@ -25,16 +25,6 @@ export default function Home() {
           </li>
         </ol>
       </main>
-
-      <footer>
-        <a
-          href="https://github.com/greatSumini"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by greatSumini
-        </a>
-      </footer>
     </div>
   );
 }
