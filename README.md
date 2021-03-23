@@ -17,6 +17,12 @@ npm install
 npm run dev
 ```
 
+### Deploy with Vercel
+
+**NOTE:** Make sure to set `Environment Variables` in Vercel Project Settings to prevent build errors
+
+[![Deploy with Vercel](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/greatSumini/nextjs-apollo-playground)
+
 ## Implemented Features
 
 - [x] Base settings (eslint, prettier, tsc)
