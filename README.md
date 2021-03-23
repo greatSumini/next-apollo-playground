@@ -27,3 +27,11 @@ npm run dev
 - [ ] Local state management
 - [ ] Testing
 - [ ] Prefetching
+
+## References
+
+- [Apollo Blog - Building a Next.js App with Apollo Client & Slash GraphQL](https://www.apollographql.com/blog/building-a-next-js-app-with-apollo-client-slash-graphql/)
+
+## Recommended tools
+
+- [Apollo Client Devtools(Chrome Extension)](https://chrome.google.com/webstore/detail/apollo-client-devtools/jdkknkkbebbapilgoeccciglkfbmbnfm)
