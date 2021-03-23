@@ -19,6 +19,8 @@ npm run dev
 
 ## Implemented Features
 
+- [x] Base settings (eslint, prettier, tsc)
+- [x] Next.js settings (dotenv)
 - [ ] directory structuring, defining building blocks
 - [ ] Image upload
 - [ ] Caching (include garbage collection management)
