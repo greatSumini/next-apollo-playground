@@ -4,7 +4,9 @@ import {
   HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
+  from,
 } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -15,9 +17,12 @@ if (!process.env.API_URL) {
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
-    link: new HttpLink({
-      uri: process.env.API_URL,
-    }),
+    link: from([
+      createUploadLink(),
+      new HttpLink({
+        uri: process.env.API_URL,
+      }),
+    ]),
     cache: new InMemoryCache(),
   });
 }
