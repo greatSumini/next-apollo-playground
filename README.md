@@ -1,8 +1,8 @@
 # Nextjs-Apollo-Playground
 
-This application is playground for Nextjs-ApolloClient.
+Playground for Nextjs-ApolloClient.
 
-you can use this for
+you can use this application for
 
 1. `Api Request Client` for complex Graphql features which are hard to produce with built-in playground (File/Image upload, ...)
 2. `Reference` for using Apollo client features
