@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -12,6 +13,15 @@ export default function Home() {
         <h1>
           Welcome to <a>Playground!</a>
         </h1>
+
+        <p>Links</p>
+        <ol>
+          <li>
+            <Link href="/image-upload">
+              <a>ImageUpload</a>
+            </Link>
+          </li>
+        </ol>
 
         <p>Learn more</p>
         <ol>

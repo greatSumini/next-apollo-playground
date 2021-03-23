@@ -2,6 +2,7 @@
     "editor.formatOnSave": true,
     "conventionalCommits.scopes": [
         "npm",
-        "apollo"
+        "apollo",
+        "client"
     ]
 }

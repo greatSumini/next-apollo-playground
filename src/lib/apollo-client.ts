@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import {
   ApolloClient,
-  HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
   from,
@@ -18,8 +17,7 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
     link: from([
-      createUploadLink(),
-      new HttpLink({
+      createUploadLink({
         uri: process.env.API_URL,
       }),
     ]),
