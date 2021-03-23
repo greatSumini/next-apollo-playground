@@ -4,12 +4,24 @@ import { gql, useMutation } from '@apollo/client';
 
 const IMAGES_UPLOAD_MUTATION = gql`
   mutation($files: [Upload!]!) {
-    uploadMultipleImages(uploadImageInput: { files: $files })
+    uploadMultipleImages(uploadImageInput: { files: $files }) {
+      status
+      reason
+      value {
+        Location
+        ETag
+        Bucket
+        Key
+      }
+    }
   }
 `;
 
 export default function ImageUploadPage() {
-  const [isSucceed, setSucceed] = useState(null);
+  const [result, setResult] = useState<{
+    requested: number;
+    succeed: number;
+  }>(null);
 
   const [mutate] = useMutation(IMAGES_UPLOAD_MUTATION);
 
@@ -19,15 +31,23 @@ export default function ImageUploadPage() {
     }
 
     try {
-      setSucceed(null);
+      setResult(null);
 
       const {
         data: { uploadMultipleImages },
       } = await mutate({ variables: { files } });
 
-      setSucceed(uploadMultipleImages);
+      setResult({
+        requested: uploadMultipleImages.length,
+        succeed: uploadMultipleImages.filter(
+          (uploadResult) => uploadResult.status === 'uploaded'
+        ).length,
+      });
     } catch (error) {
-      setSucceed(false);
+      setResult({
+        requested: files.length,
+        succeed: 0,
+      });
       console.log(error);
     }
   }
@@ -51,9 +71,12 @@ export default function ImageUploadPage() {
         />
 
         <h3>status</h3>
-        {isSucceed === null && <p>Request not made or Response pending</p>}
-        {isSucceed !== null && (
-          <p>upload request {isSucceed ? 'succeed 🎉' : 'failed 😢'}</p>
+        {result === null && <p>Request not made or Response pending</p>}
+        {result !== null && (
+          <p>
+            upload request {result.succeed > 0 ? 'succeed 🎉' : 'failed 😢'} (
+            {result.succeed}/{result.requested})
+          </p>
         )}
       </main>
     </div>
