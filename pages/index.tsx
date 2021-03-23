@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Nextjs Apollo Playground</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main>
@@ -13,19 +13,17 @@ export default function Home() {
           Welcome to <a>Playground!</a>
         </h1>
 
-        <p>
-          Learn more
-          <ol>
-            <li>
-              <a href="https://nextjs.org">Next.js</a>
-            </li>
-            <li>
-              <a href="https://www.apollographql.com/docs/react/">
-                Apollo Client (React)
-              </a>
-            </li>
-          </ol>
-        </p>
+        <p>Learn more</p>
+        <ol>
+          <li>
+            <a href="https://nextjs.org">Next.js</a>
+          </li>
+          <li>
+            <a href="https://www.apollographql.com/docs/react/">
+              Apollo Client (React)
+            </a>
+          </li>
+        </ol>
       </main>
 
       <footer>
