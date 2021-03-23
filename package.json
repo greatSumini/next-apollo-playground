@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix --ext .ts,.tsx ./",
     "pretty": "prettier --write \"./**/*.(ts|tsx)\"",
+    "lint": "eslint --fix --ext .ts,.tsx ./",
     "tsc:check": "tsc --noEmit",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test": "npm run pretty && npm run lint && npm run tsc:check"
   },
   "dependencies": {
     "next": "10.0.9",
