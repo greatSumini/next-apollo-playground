@@ -4,24 +4,12 @@ import { gql, useMutation } from '@apollo/client';
 
 const IMAGES_UPLOAD_MUTATION = gql`
   mutation($files: [Upload!]!) {
-    uploadMultipleImages(uploadImageInput: { files: $files }) {
-      status
-      reason
-      value {
-        Location
-        ETag
-        Bucket
-        Key
-      }
-    }
+    uploadMultipleImages(uploadImageInput: { files: $files })
   }
 `;
 
 export default function ImageUploadPage() {
-  const [result, setResult] = useState<{
-    requested: number;
-    succeed: number;
-  }>(null);
+  const [data, setData] = useState<string[]>(null);
 
   const [mutate] = useMutation(IMAGES_UPLOAD_MUTATION);
 
@@ -31,23 +19,15 @@ export default function ImageUploadPage() {
     }
 
     try {
-      setResult(null);
+      setData(null);
 
       const {
         data: { uploadMultipleImages },
       } = await mutate({ variables: { files } });
 
-      setResult({
-        requested: uploadMultipleImages.length,
-        succeed: uploadMultipleImages.filter(
-          (uploadResult) => uploadResult.status === 'uploaded'
-        ).length,
-      });
+      setData(uploadMultipleImages);
     } catch (error) {
-      setResult({
-        requested: files.length,
-        succeed: 0,
-      });
+      setData([...Array(files.length)].fill(null));
       console.log(error);
     }
   }
@@ -71,13 +51,19 @@ export default function ImageUploadPage() {
         />
 
         <h3>status</h3>
-        {result === null && <p>Request not made or Response pending</p>}
-        {result !== null && (
+        {data === null && <p>Request not made or Response pending</p>}
+        {data !== null && (
           <p>
-            upload request {result.succeed > 0 ? 'succeed 🎉' : 'failed 😢'} (
-            {result.succeed}/{result.requested})
+            upload request{' '}
+            {data.filter((v) => v).length > 0 ? 'succeed 🎉' : 'failed 😢'} (
+            {data.filter((v) => v).length}/{data.length})
           </p>
         )}
+        {data
+          ?.filter((v) => v)
+          .map((url) => (
+            <img key={url} src={url + '?w=350&h=350&f=webp&q=60'} />
+          ))}
       </main>
     </div>
   );

@@ -28,7 +28,7 @@ npm run dev
 - [x] Base settings (eslint, prettier, tsc)
 - [x] Next.js settings (dotenv)
 - [ ] directory structuring, defining building blocks
-- [ ] Image upload
+- [x] Image upload
 - [ ] Caching (include garbage collection management)
 - [ ] Local state management
 - [ ] Testing
